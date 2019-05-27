@@ -1,18 +1,18 @@
 import React from 'react';
-import { CarsServiceConsumer } from '../cars-service-context';
+import { TaskServiceConsumer } from '../task-service-context';
 
 const withCarsService = () => (Wrapped) => {
 
 	return (props) => {
 		return (
-			<CarsServiceConsumer>
+			<TaskServiceConsumer>
 				{
 					(carsService) => {
 						return (<Wrapped {...props}
 						                 carsService={carsService}/>);
 					}
 				}
-			</CarsServiceConsumer>
+			</TaskServiceConsumer>
 		);
 	}
 };

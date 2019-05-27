@@ -1,17 +1,25 @@
-import React from 'react';
+import React from 'react'
 
-import App from '../app';
+import { TaskServiceProvider } from '../../components/task-service-context'
+
+import App from '../app'
 
 import './index.scss'
 
-const Main = ({ clazz }) => {
-	return (
-		<main className={`${clazz} main`}>
-			<div className='main__inner'>
-				<App/>
-			</div>
-		</main>
-	)
-};
+import TaskService from '../../services/task-service'
 
-export default Main;
+const taskService = new TaskService()
+
+const Main = () => {
+    return (
+        <main className='main'>
+            <div className='main__inner'>
+                <TaskServiceProvider value={taskService}>
+                    <App />
+                </TaskServiceProvider>
+            </div>
+        </main>
+    )
+}
+
+export default Main

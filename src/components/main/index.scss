@@ -3,15 +3,24 @@
 .main {
 	display: flex;
 	flex-direction: column;
+	@include tablet {
+		padding: 15px;
+		box-sizing: border-box;
+		background: #f2f2f2;
+		height: 100vh;
+	}
 }
 
 .main__inner {
 	display: flex;
 	flex-direction: column;
+	background: #fff;
+	height: 100vh;
 	@include tablet {
-		margin-bottom: 420px;
+		border-radius: 4px;
+		overflow: hidden;
 	}
-	@include desktop {
-		margin-bottom: 330px;
-	}
+	//@include desktop {
+	//	margin-bottom: 330px;
+	//}
 }

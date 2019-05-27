@@ -8,16 +8,9 @@ import ReactDOM from 'react-dom'
 
 import './static/styles/index.scss'
 
-import App from './components/page'
-
-import CarsService from './services/cars-service'
-import { CarsServiceProvider } from './components/cars-service-context'
-
-const carService = new CarsService();
+import Main from './components/main'
 
 ReactDOM.render(
-    <CarsServiceProvider value={carService}>
-        <App />
-    </CarsServiceProvider>,
+    <Main />,
     document.getElementById('root')
 );
