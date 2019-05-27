@@ -1,12 +1,23 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import 'core-js/es/map';
+import 'core-js/es/set';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import 'raf/polyfill';
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+import React from 'react'
+import ReactDOM from 'react-dom'
+
+import './static/styles/index.scss'
+
+import App from './components/page'
+
+import CarsService from './services/cars-service'
+import { CarsServiceProvider } from './components/cars-service-context'
+
+const carService = new CarsService();
+
+ReactDOM.render(
+    <CarsServiceProvider value={carService}>
+        <App />
+    </CarsServiceProvider>,
+    document.getElementById('root')
+);
