@@ -1,5 +1,5 @@
-import withCarsService from './with-cars-service';
+import withPlatformsService from './with-platforms-service';
 
 export {
-	withCarsService
+	withPlatformsService
 };

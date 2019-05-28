@@ -8,7 +8,7 @@ import ReactDOM from 'react-dom'
 
 import './static/styles/index.scss'
 
-import Main from './components/main'
+import Main from './components/main';
 
 ReactDOM.render(
     <Main />,

@@ -24,3 +24,27 @@
 		margin-bottom: 128px;
 	}
 }
+
+.stat {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 85px 85px;
+	grid-gap: 5px;
+}
+
+.stat__block {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding: 0 15px;
+	border-radius: 4px;
+	color: #fff;
+	background-color: #4A0594;
+}
+
+.stat__number {
+	font-size: 1.9rem;
+	line-height: 1.4;
+	font-weight: 600;
+	//margin-bottom: 8px;
+}

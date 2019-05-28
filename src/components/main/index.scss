@@ -3,6 +3,7 @@
 .main {
 	display: flex;
 	flex-direction: column;
+	padding: 10px;
 	@include tablet {
 		padding: 15px;
 		box-sizing: border-box;

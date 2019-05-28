@@ -1,22 +1,22 @@
 import React from 'react'
 
-import { TaskServiceProvider } from '../../components/task-service-context'
+import { PlatformsServiceProvider } from '../platforms-service-context'
 
 import App from '../app'
 
 import './index.scss'
 
-import TaskService from '../../services/task-service'
+import PlatformsService from '../../services/platforms-service'
 
-const taskService = new TaskService()
+const platformsService = new PlatformsService();
 
 const Main = () => {
     return (
         <main className='main'>
             <div className='main__inner'>
-                <TaskServiceProvider value={taskService}>
+                <PlatformsServiceProvider value={platformsService}>
                     <App />
-                </TaskServiceProvider>
+                </PlatformsServiceProvider>
             </div>
         </main>
     )
