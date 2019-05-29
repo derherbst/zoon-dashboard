@@ -1,3 +1,5 @@
+@import "../../static/styles/mixins";
+
 .platforms {
 	display: grid;
 	grid-template-columns: 1fr;
@@ -15,28 +17,41 @@
 	&--active {
 		border-left-color: #5A39A7;
 	}
+	@include desktop {
+		padding: 15px 15px 15px 25px;
+	}
 }
 
 .platform__inner {
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr 1fr;
-	grid-template-rows: auto auto;
-	grid-template-areas: "title title title kebab"
-			"configured configured configured configured"
-			"sync-status options options options"
-			"configured configured options options";
+	grid-gap: 5px;
+	grid-template-rows: auto;
+	grid-template-areas:
+					"title . . kebab"
+					"configured configured configured configured"
+					"options-wrap options-wrap options-wrap options-wrap"
+					"status status warn warn";
+	@include desktop {
+		grid-template-areas:
+						"title configured . kebab"
+						"options-wrap options-wrap options-wrap ."
+						"status status warn warn";
+	}
 }
 
 .platform__title {
 	font-size: 16px;
 	font-weight: 600;
 	grid-area: title;
+	//grid-column: span 1;
 }
 
 .platform__configured {
 	color: #BBBCC4;
 	font-size: 1rem;
 	grid-area: configured;
+	//grid-row: span 2;
 }
 
 .platform__config {
@@ -54,42 +69,127 @@
 
 .platform__sync-status {
 	grid-area: sync-status;
+	margin-bottom: 5px;
+	position: relative;
+	&::before {
+		content: '';
+		display: block;
+		position: absolute;
+		width: 9px;
+		height: 10px;
+		left: 10px;
+		top: 50%;
+		transform: translateY(-50%);
+		background-position: center center;
+		background-repeat: no-repeat;
+		background-size: contain;
+		background-image: url("../../static/images/i_refresh2.svg");
+	}
 	&--synced {
 		background-color: #4A0594;
 		border: 1px solid #4A0594;
 		color: #fff;
+		&::before {
+			background-image: url("../../static/images/i_fill.svg");
+		}
+	}
+	@include desktop {
+		margin-right: 5px;
 	}
 }
+
+ .platform__options-wrapper {
+	 grid-area: options-wrap;
+	 @include desktop {
+		 display: flex;
+	 }
+ }
+
+ .platform__option {
+	 margin-right: 5px;
+	 position: relative;
+	 &::before {
+		 content: '';
+		 display: block;
+		 position: absolute;
+		 width: 9px;
+		 height: 10px;
+		 left: 10px;
+		 top: 50%;
+		 transform: translateY(-50%);
+		 background-position: center center;
+		 background-repeat: no-repeat;
+		 background-size: contain;
+		 background-image: url("../../static/images/i_fill.svg");
+	 }
+ }
 
 .platform__options {
 	grid-area: options;
 }
 
 .platform__rate {
-	grid-area: rate;
+	grid-area: status;
+	align-self: end;
+	&--no-rate {
+		font-weight: 400;
+		color: #BBBCC4;
+	}
+}
+
+.platform__rate-num {
+	color: #FFAA30;
+	font-weight: 600;
+	margin-right: 10px;
 }
 
 .platform__status {
 	color: #BBBCC4;
 	grid-area: status;
+	align-self: end;
 }
 
 .platform__updates {
-	grid-area: updates;
+	grid-area: warn;
+	justify-self: end;
+	color: #4A0594;
 }
 
 .platform__warn {
+	background-color: #FFAA30;
 	grid-area: warn;
+	justify-self: end;
+	height: 28px;
+	box-sizing: border-box;
+	border-radius: 4px;
+	padding-left: 24px;
+	padding-right: 10px;
+	display: inline-flex;
+	align-items: center;
+	color: #fff;
+	position: relative;
+	&::before {
+		content: '';
+		display: block;
+		position: absolute;
+		width: 12px;
+		height: 14px;
+		left: 10px;
+		top: 50%;
+		transform: translateY(-50%);
+		background-position: center center;
+		background-repeat: no-repeat;
+		background-size: contain;
+		background-image: url("../../static/images/i_warn.svg");
+	}
 }
 
 .platform__kebab {
-	//cursor: pointer;
-	//position: relative;
-	//display: inline-block;
-	//box-sizing: border-box;
-	//padding: 0 16px;
-	//top: 12px;
+	position: relative;
 	grid-area: kebab;
+	justify-self: end;
+	cursor: pointer;
+	padding: 0 5px;
 	figure {
 		width: 4px;
 		height: 4px;
@@ -97,11 +197,80 @@
 		background: #BBBCC4;
 		margin: 3px 0;
 	}
+	&:hover {
+		figure {
+			background: #4A0594;
+		}
+	}
 }
 
 .platform__popup {
+
+	padding: 8px 10px;
+	border-radius: 4px;
+	background-color: #fff;
+	right: 4px;
+	top: 3.4em;
+
 	position: absolute;
 	display: none;
+	border: 1px solid #E8E8E8;
+	transition: all 0.15s ease-out;
+	transform: scale(0);
+	transform-origin: 100% 0;
+	&.is-opened {
+		transform: scale(1);
+		display: block;
+		z-index: 2;
+	}
+	&::before {
+		content: '';
+		display: block;
+		position: absolute;
+		right: 8px;
+		top: -6px;
+		width: 10px;
+		height: 10px;
+		transform: rotate(45deg);
+		background-color: #fff;
+		border-width: 1px 0 0 1px;
+		border-style: solid;
+		border-color: #E8E8E8;
+	}
+
+	@include desktop {
+		padding: 15px 20px;
+		border-radius: 4px;
+		background-color: #fff;
+		right: -15px;
+		top: 4em;
+		&::before {
+			content: '';
+			display: block;
+			position: absolute;
+			right: 30px;
+			top: -6px;
+			width: 10px;
+			height: 10px;
+			transform: rotate(45deg);
+			background-color: #fff;
+			border-width: 1px 0 0 1px;
+			border-style: solid;
+			border-color: #E8E8E8;
+		}
+	}
+}
+
+.platform__popup-inner {
+	position: relative;
+
+}
+
+.platform__toggle {
+	cursor: pointer;
+	&:hover {
+		color: #4A0594;
+	}
 }
 
 .mini-card {
