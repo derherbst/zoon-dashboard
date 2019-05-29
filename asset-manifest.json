@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/zoon-dashboard/static/css/main.a1a19bb6.chunk.css",
+    "main.js": "/zoon-dashboard/static/js/main.ca140929.chunk.js",
+    "main.js.map": "/zoon-dashboard/static/js/main.ca140929.chunk.js.map",
+    "runtime~main.js": "/zoon-dashboard/static/js/runtime~main.f6658613.js",
+    "runtime~main.js.map": "/zoon-dashboard/static/js/runtime~main.f6658613.js.map",
+    "static/js/2.e9f319c9.chunk.js": "/zoon-dashboard/static/js/2.e9f319c9.chunk.js",
+    "static/js/2.e9f319c9.chunk.js.map": "/zoon-dashboard/static/js/2.e9f319c9.chunk.js.map",
+    "index.html": "/zoon-dashboard/index.html",
+    "precache-manifest.0aa0f4e1a199161f28ad6d22882c888a.js": "/zoon-dashboard/precache-manifest.0aa0f4e1a199161f28ad6d22882c888a.js",
+    "service-worker.js": "/zoon-dashboard/service-worker.js",
+    "static/css/main.a1a19bb6.chunk.css.map": "/zoon-dashboard/static/css/main.a1a19bb6.chunk.css.map",
+    "static/media/index.scss": "/zoon-dashboard/static/media/i_warn.11b16b97.svg"
+  }
+}
